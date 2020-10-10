@@ -3,6 +3,7 @@ import { themes } from 'mdx-deck'
 import { CodeSurfer } from "code-surfer"
 import "prismjs/components/prism-rust"
 import { github } from "@code-surfer/themes"
+import ErrorLayout from './ErrorLayout.js'
 import './styles.css'
 
 export const theme = {...quicktheme, ...themes.prism, ...quicktheme}
@@ -323,19 +324,21 @@ fn main() {
 
 ---
 
+<ErrorLayout>
+
 ```
-error[E0599]: no method named `read_to_string` found for enum
-`std::result::Result<std::fs::File, std::io::Error>` in the current scope
+error[E0599]: no method named `read_to_string` found for enum `std::result::Result<std::fs::File, std::io::Error>` in the current scope
  --> src/readfile.rs:6:10
   |
 6 |     file.read_to_string(&mut contents);
-  |          ^^^^^^^^^^^^^^ method not found in
-			    `std::result::Result<std::fs::File, std::io::Error>`
+  |          ^^^^^^^^^^^^^^ method not found in `std::result::Result<std::fs::File, std::io::Error>`
 
 error: aborting due to previous error
 
 For more information about this error, try `rustc --explain E0599`.
 ```
+
+</ErrorLayout>
 
 ---
 
@@ -373,8 +376,7 @@ fn main() {
 # Woops! | panic!()
 
 ```
-thread 'main' panicked at 'called `Result::unwrap()` on an
-`Err` value: Os { code: 2, kind: NotFound,
+thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound,
 message: "No such file or directory" }', src/readfile.rs:5:42
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 ```
@@ -739,6 +741,8 @@ fn main() {
 
 ---
 
+<ErrorLayout>
+
 ```
 error[E0277]: `?` couldn't convert the error to `CustomErrors`
   --> src/customerrors2.rs:19:37
@@ -755,6 +759,8 @@ error: aborting due to previous error
 
 For more information about this error, try `rustc --explain E0277`.
 ```
+
+</ErrorLayout>
 
 ---
 
