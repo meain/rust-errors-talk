@@ -214,92 +214,70 @@ fn main() {
 // main.go: None
 ```
 
+</CodeSurfer>
+
+---
+
+...
+
+---
+
+<CodeSurfer theme={github}>
+
 ```rust
-// enum Option<ValueType> {
-//     Some<Valuetype>,
-//     None
-// }
-
-fn is_rustfile(name: &str) -> Option<String> {
-    if name.ends_with(".rs") {
-        Some(name.to_string())
-    } else {
-        None
-    }
-}
-
-fn main() {
-    println!("main.rs: {:?}", is_rustfile("main.rs"));
-    println!("main.go: {:?}", is_rustfile("main.go"));
+enum Option<ValueType> {
+    Some<Valuetype>,
+    None
 }
 ```
 
 ```rust
-// enum Option<String> {
-//     Some<String>,
-//     None
-// }
-
-fn is_rustfile(name: &str) -> Option<String> {
-    if name.ends_with(".rs") {
-        Some(name.to_string())
-    } else {
-        None
-    }
-}
-
-fn main() {
-    println!("main.rs: {:?}", is_rustfile("main.rs"));
-    println!("main.go: {:?}", is_rustfile("main.go"));
+enum Option<String> {
+    Some<String>,
+    None
 }
 ```
 
 ```rust
-// enum Result<ValueType, ErrorType> {
-//     Ok<ValueType>,
-//     Err<ErrorType>  // we don't like anything other than rust
-// }
-
-fn is_rustfile(name: &str) -> Result<String, String> {
-    if name.ends_with(".rs") {
-        Ok(name.to_string())
-    } else {
-        Err(String::from("Where is my rust file?"))
-    }
-}
-
-fn main() {
-    println!("main.rs: {:?}", is_rustfile("main.rs"));
-    println!("main.go: {:?}", is_rustfile("main.go"));
-}
-```
-
-```rust
-// enum Result<String, String> {
-//     Ok<String>,
-//     Err<String>  // we don't like anything other than rust
-// }
-
-fn is_rustfile(name: &str) -> Result<String, String> {
-    if name.ends_with(".rs") {
-        Ok(name.to_string())
-    } else {
-        Err(String::from("Where is my rust file?"))
-    }
-}
-
-fn main() {
-    println!("main.rs: {:?}", is_rustfile("main.rs"));
-    println!("main.go: {:?}", is_rustfile("main.go"));
+enum Result<ValueType, ErrorType> {
+    Ok<ValueType>,
+    Err<ErrorType>  // we don't like anything other than rust
 }
 ```
 
 ```rust
 enum Result<String, String> {
-    Ok(String),
-    Err(String)  // we don't like anything other than rust
+    Ok<String>,
+    Err<String>  // we don't like anything other than rust
+}
+```
+
+</CodeSurfer>
+
+---
+
+...
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+fn is_rustfile(name: &str) -> Option<String> {
+    if name.ends_with(".rs") {
+        Some(name.to_string())
+    } else {
+        None
+    }
 }
 
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+```
+
+```rust
 fn is_rustfile(name: &str) -> Result<String> {
     if name.ends_with(".rs") {
         Ok(name.to_string())
@@ -330,15 +308,6 @@ So yeah, just an enum.
 ---
 
 <CodeSurfer theme={github}>
-
-```rust
-use std::fs::File;
-
-fn main() {
-    let mut file = File::open("secret-to-understanding-borrow-checker.txt");
-    // ... big plans ahed
-}
-```
 
 ```rust
 use std::fs::File;
@@ -415,6 +384,16 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 ---
 
 <CodeSurfer theme={github}>
+
+```rust
+use std::fs::File;
+
+fn main() {
+    let mut file = File::open("secret-to-understanding-borrow-checker.txt").unwrap();
+    let mut contents = String::new();
+    file.read_to_string(&mut contents);
+}
+```
 
 ```rust
 use std::fs::File;
@@ -641,6 +620,11 @@ fn main() -> std::io::Result<()> {
 
 ---
 
+# That is the basics
+
+
+---
+
 # Custom error types
 
 ---
@@ -648,7 +632,7 @@ fn main() -> std::io::Result<()> {
 <CodeSurfer theme={github}>
 
 ```rust
-// two types of errors
+// two little errors, walking down the hill
 enum CustomErrors {
     NoFile,
     NonRustFile
@@ -722,16 +706,6 @@ impl fmt::Display for CustomErrors {
     }
 }
 ```
-
-</CodeSurfer>
-
----
-
-But there is more...
-
----
-
-<CodeSurfer theme={github}>
 
 ```rust
 use std::error::Error;
