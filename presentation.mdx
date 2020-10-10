@@ -1,0 +1,1000 @@
+import quicktheme from './theme'
+import { themes } from 'mdx-deck'
+import { CodeSurfer } from "code-surfer"
+import "prismjs/components/prism-rust"
+import { github } from "@code-surfer/themes"
+import './styles.css'
+
+export const theme = {...quicktheme, ...themes.prism, ...quicktheme}
+
+# Hey
+
+A quick intro to error handling in Rust
+
+---
+
+# It's just an enum! 🤷
+
+```rust
+Result<Value, Error>
+```
+
+---
+
+Let's see some code
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+enum FileKind {
+    Rust,
+    NotRust,
+}
+```
+
+```rust
+enum FileKind {
+    Rust(String),
+    NotRust(String),
+}
+```
+
+```rust
+enum FileKind {
+    Rust(String),
+    NotRust(String),
+}
+
+fn is_rustfile(name: &str) -> FileKind {
+    if name.ends_with(".rs") {
+        FileKind::Rust(name.to_string())
+    } else {
+        FileKind::NotRust(name.to_string())
+    }
+}
+```
+```rust
+enum FileKind {
+    Rust(String),
+    NotRust(String),
+}
+
+fn is_rustfile(name: &str) -> FileKind {
+    if name.ends_with(".rs") {
+        FileKind::Rust(name.to_string())
+    } else {
+        FileKind::NotRust(name.to_string())
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+```
+
+```rust
+enum FileKind {
+    Rust(String),
+    NotRust(String),
+}
+
+fn is_rustfile(name: &str) -> FileKind {
+    if name.ends_with(".rs") {
+        FileKind::Rust(name.to_string())
+    } else {
+        FileKind::NotRust(name.to_string())
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+
+// main.rs: Rust("main.rs")
+// main.go: NotRust("main.go")
+```
+
+```rust
+enum FileKind {
+    Rust(String),
+    NotRust(String),
+}
+
+fn is_rustfile(name: &str) -> FileKind {
+    if name.ends_with(".rs") {
+        FileKind::Rust(name.to_string())
+    } else {
+        FileKind::NotRust(name.to_string())
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+```
+
+```rust
+enum FileKind {
+    Rust(String),
+    None
+}
+
+fn is_rustfile(name: &str) -> FileKind {
+    if name.ends_with(".rs") {
+        FileKind::Rust(name.to_string())
+    } else {
+        FileKind::None
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+```
+
+```rust
+enum FileKind {
+    Rust(String),
+    None
+}
+
+fn is_rustfile(name: &str) -> FileKind {
+    if name.ends_with(".rs") {
+        FileKind::Rust(name.to_string())
+    } else {
+        FileKind::None
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+
+// main.rs: Rust("main.rs")
+// main.go: None
+```
+
+```rust
+enum FileKind {
+    Rust(String),
+    None
+}
+
+fn is_rustfile(name: &str) -> FileKind {
+    if name.ends_with(".rs") {
+        FileKind::Rust(name.to_string())
+    } else {
+        FileKind::None
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+```
+
+```rust
+fn is_rustfile(name: &str) -> Option<String> {
+    if name.ends_with(".rs") {
+        Some(name.to_string())
+    } else {
+        None
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+```
+
+```rust
+fn is_rustfile(name: &str) -> Option<String> {
+    if name.ends_with(".rs") {
+        Some(name.to_string())
+    } else {
+        None
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+
+// main.rs: Some("main.rs")
+// main.go: None
+```
+
+```rust
+// enum Option<ValueType> {
+//     Some<Valuetype>,
+//     None
+// }
+
+fn is_rustfile(name: &str) -> Option<String> {
+    if name.ends_with(".rs") {
+        Some(name.to_string())
+    } else {
+        None
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+```
+
+```rust
+// enum Option<String> {
+//     Some<String>,
+//     None
+// }
+
+fn is_rustfile(name: &str) -> Option<String> {
+    if name.ends_with(".rs") {
+        Some(name.to_string())
+    } else {
+        None
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+```
+
+```rust
+// enum Result<ValueType, ErrorType> {
+//     Ok<ValueType>,
+//     Err<ErrorType>  // we don't like anything other than rust
+// }
+
+fn is_rustfile(name: &str) -> Result<String, String> {
+    if name.ends_with(".rs") {
+        Ok(name.to_string())
+    } else {
+        Err(String::from("Where is my rust file?"))
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+```
+
+```rust
+// enum Result<String, String> {
+//     Ok<String>,
+//     Err<String>  // we don't like anything other than rust
+// }
+
+fn is_rustfile(name: &str) -> Result<String, String> {
+    if name.ends_with(".rs") {
+        Ok(name.to_string())
+    } else {
+        Err(String::from("Where is my rust file?"))
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+```
+
+```rust
+enum Result<String, String> {
+    Ok(String),
+    Err(String)  // we don't like anything other than rust
+}
+
+fn is_rustfile(name: &str) -> Result<String> {
+    if name.ends_with(".rs") {
+        Ok(name.to_string())
+    } else {
+        Err(String::from("Where is my rust file?"))
+    }
+}
+
+fn main() {
+    println!("main.rs: {:?}", is_rustfile("main.rs"));
+    println!("main.go: {:?}", is_rustfile("main.go"));
+}
+
+// main.rs: Ok("main.rs")
+// main.go: Err("Where is my rust file?")
+```
+
+</CodeSurfer>
+
+---
+
+So yeah, just an enum.
+
+---
+
+# Handling errors
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+use std::fs::File;
+
+fn main() {
+    let mut file = File::open("secret-to-understanding-borrow-checker.txt");
+    // ... big plans ahed
+}
+```
+
+```rust
+use std::fs::File;
+
+fn main() {
+    let mut file = File::open("secret-to-understanding-borrow-checker.txt");
+    let mut contents = String::new();
+    file.read_to_string(&mut contents);
+}
+```
+
+</CodeSurfer>
+
+---
+
+```
+error[E0599]: no method named `read_to_string` found for enum
+`std::result::Result<std::fs::File, std::io::Error>` in the current scope
+ --> src/readfile.rs:6:10
+  |
+6 |     file.read_to_string(&mut contents);
+  |          ^^^^^^^^^^^^^^ method not found in
+			    `std::result::Result<std::fs::File, std::io::Error>`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0599`.
+```
+
+---
+
+<CodeSurfer theme={github}>
+
+
+```rust
+use std::fs::File;
+
+fn main() {
+    let mut file = File::open("secret-to-understanding-borrow-checker.txt");
+    let mut contents = String::new();
+    file.read_to_string(&mut contents);
+}
+```
+
+```rust
+use std::fs::File;
+
+fn main() {
+    let mut file = File::open("secret-to-understanding-borrow-checker.txt").unwrap();
+    let mut contents = String::new();
+    file.read_to_string(&mut contents);
+}
+```
+
+</CodeSurfer>
+
+---
+
+# It compiles!
+
+---
+
+# Woops! | panic!()
+
+```
+thread 'main' panicked at 'called `Result::unwrap()` on an
+`Err` value: Os { code: 2, kind: NotFound,
+message: "No such file or directory" }', src/readfile.rs:5:42
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+```
+
+> Use `unwrap_or` if you wanna pass default value
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+use std::fs::File;
+use std::io::prelude::*;
+
+fn main() {
+    let mut file = File::open("secret-to-understanding-borrow-checker.txt");
+    match file {
+        Ok(mut f) => {
+            let mut contents = String::new();
+            f.read_to_string(&mut contents);
+        }
+        Err(_) => {
+            println!("Hey, I don't think that file exists.");
+        }
+    };
+}
+```
+
+</CodeSurfer>
+
+---
+
+```yaml
+Hey, I don't think that file exists.
+```
+
+---
+
+# ? operator
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+use std::fs::File;
+use std::io::prelude::*;
+
+fn main() {
+    let mut file = File::open("foo.txt");
+    match file {
+        Ok(mut f) => {
+            let mut contents = String::new();
+            f.read_to_string(&mut contents);
+        }
+        Err(_) => {
+            println!("Hey, I don't think that file exists.");
+        }
+    };
+}
+```
+
+```rust 5:15
+use std::fs::File;
+use std::io::prelude::*;
+use std::io::Error;
+
+fn read_file_contents(name: &str) -> Result<String, Error> {
+    let file = File::open(name);
+    match file {
+        Ok(mut f) => {
+            let mut contents = String::new();
+            f.read_to_string(&mut contents);
+            Ok(contents)
+        }
+        Err(err) => Err(err),
+    }
+}
+
+fn main() {
+    let file_contents = read_file_contents("foo.txt");
+    match file_contents {
+        Ok(fc) => {
+            println!("{}", fc);
+        }
+        Err(_) => {
+            println!("Hey, I don't think that file exists.");
+        }
+    };
+}
+```
+
+```rust 5:18
+use std::fs::File;
+use std::io::prelude::*;
+use std::io::Error;
+
+fn read_file_contents(name: &str) -> Result<String, Error> {
+    let file = File::open(name);
+    match file {
+        Ok(mut f) => {
+            let mut contents = String::new();
+            let read_error = f.read_to_string(&mut contents);
+            return match read_error {
+                Ok(_) => Ok(contents),
+                Err(e) => Err(e)
+            }
+        }
+        Err(err) => Err(err),
+    }
+}
+
+fn main() {
+    let file_contents = read_file_contents("foo.txt");
+    match file_contents {
+        Ok(fc) => {
+            println!("{}", fc);
+        }
+        Err(_) => {
+            println!("Hey, I don't think that file exists.");
+        }
+    };
+}
+```
+
+```rust
+use std::fs::File;
+use std::io::prelude::*;
+use std::io::Error;
+
+fn read_file_contents(name: &str) -> Result<String, Error> {
+    let mut file = File::open(name)?;
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?;
+    Ok(contents)
+}
+
+fn main() {
+    let file_contents = read_file_contents("foo.txt");
+    match file_contents {
+        Ok(fc) => {
+            println!("{}", fc);
+        }
+        Err(_) => {
+            println!("Hey, I don't think that file exists.");
+        }
+    };
+}
+```
+
+```rust
+use std::fs::File;
+use std::io::prelude::*;
+use std::io::Error;
+
+fn read_file_contents(name: &str) -> Result<String, Error> {
+    let mut file = File::open(name)?;
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?;
+    Ok(contents)
+}
+
+fn main() -> std::io::Result<()> {
+    let file_contents = read_file_contents("foo.txt")?;
+    println!("{}", file_contents);
+    Ok(())
+}
+```
+
+</CodeSurfer>
+
+---
+
+...
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust 6:17,22:29
+use std::fs::File;
+use std::io::prelude::*;
+use std::io::Error;
+
+fn read_file_contents(name: &str) -> Result<String, Error> {
+    let file = File::open(name);
+    match file {
+        Ok(mut f) => {
+            let mut contents = String::new();
+            let read_error = f.read_to_string(&mut contents);
+            return match read_error {
+                Ok(_) => Ok(contents),
+                Err(e) => Err(e)
+            }
+        }
+        Err(err) => Err(err),
+    }
+}
+
+fn main() {
+    let file_contents = read_file_contents("foo.txt");
+    match file_contents {
+        Ok(fc) => {
+            println!("{}", fc);
+        }
+        Err(_) => {
+            println!("Hey, I don't think that file exists.");
+        }
+    };
+}
+```
+
+```rust 6:9,13:14
+use std::fs::File;
+use std::io::prelude::*;
+use std::io::Error;
+
+fn read_file_contents(name: &str) -> Result<String, Error> {
+    let mut file = File::open(name)?;
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?;
+    Ok(contents)
+}
+
+fn main() -> std::io::Result<()> {
+    let file_contents = read_file_contents("foo.txt")?;
+    println!("{}", file_contents);
+    Ok(())
+}
+```
+
+</CodeSurfer>
+
+---
+
+# Custom error types
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+// two types of errors
+enum CustomErrors {
+    NoFile,
+    NonRustFile
+}
+```
+
+```rust
+use std::error::Error;
+
+#[derive(Debug)]
+enum CustomErrors {
+    NoFile,
+    NonRustFile
+}
+
+// officially make it an error
+impl Error for CustomErrors {}
+```
+
+</CodeSurfer>
+
+---
+
+# Helpful compiler
+
+```
+error[E0277]: `CustomErrors` doesn't implement `std::fmt::Display`
+  --> src/customerrors.rs:9:6
+   |
+9  | impl Error for CustomErrors {}
+   |      ^^^^^ `CustomErrors` cannot be formatted with the default formatter
+   | 
+  ::: rustlib/src/rust/src/libstd/error.rs:48:26
+   |
+48 | pub trait Error: Debug + Display {
+   |                          ------- required by this bound in `std::error::Error`
+   |
+   = help: the trait `std::fmt::Display` is not implemented for `CustomErrors`
+```
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+use std::error::Error;
+
+#[derive(Debug)]
+enum CustomErrors {
+    NoFile,
+    NonRustFile,
+}
+
+impl Error for CustomErrors {}
+```
+
+```rust
+use std::error::Error;
+use std::fmt;
+
+#[derive(Debug)]
+enum CustomErrors {
+    NoFile,
+    NonRustFile,
+}
+
+impl Error for CustomErrors {}
+impl fmt::Display for CustomErrors {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "error: {:?}", self)
+    }
+}
+```
+
+</CodeSurfer>
+
+---
+
+But there is more...
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+use std::error::Error;
+use std::fmt;
+use std::fs::File;
+
+#[derive(Debug)]
+enum CustomErrors {
+    NoFile,
+    NonRustFile,
+}
+
+impl Error for CustomErrors {}
+impl fmt::Display for CustomErrors {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "error: {:?}", self)
+    }
+}
+
+fn do_thing() -> Result<(), CustomErrors> {
+    let file = File::open("foo.txt")?;
+    Ok(())
+}
+
+fn main() {
+    do_thing();
+}
+```
+
+</CodeSurfer>
+
+---
+
+```
+error[E0277]: `?` couldn't convert the error to `CustomErrors`
+  --> src/customerrors2.rs:19:37
+   |
+18 | fn do_thing() -> Result<(), CustomErrors> {
+   |                  ------------------------ expected `CustomErrors` because of this
+19 |     let file = File::open("foo.txt")?;
+   |                                     ^ the trait `std::convert::From<std::io::Error>` is not implemented for `CustomErrors`
+   |
+   = note: the question mark operation (`?`) implicitly performs a conversion on the error value using the `From` trait
+   = note: required by `std::convert::From::from`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0277`.
+```
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+use std::error::Error;
+use std::fmt;
+use std::fs::File;
+
+#[derive(Debug)]
+enum CustomErrors {
+    NoFile,
+    NonRustFile,
+}
+
+impl Error for CustomErrors {}
+impl fmt::Display for CustomErrors {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "error: {:?}", self)
+    }
+}
+
+fn do_thing() -> Result<(), CustomErrors> {
+    let file = File::open("foo.txt")?;
+    Ok(())
+}
+
+fn main() {
+    do_thing();
+}
+```
+
+```rust
+use std::error::Error;
+use std::fmt;
+use std::fs::File;
+
+#[derive(Debug)]
+enum CustomErrors {
+    NoFile,
+    NonRustFile,
+}
+
+impl Error for CustomErrors {}
+impl fmt::Display for CustomErrors {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "error: {:?}", self)
+    }
+}
+
+fn do_thing() -> Result<(), Box<dyn Error>> {
+    let file = File::open("foo.txt")?;
+    Ok(())
+}
+
+fn main() {
+    do_thing();
+}
+```
+
+</CodeSurfer>
+
+---
+
+# But there is a better way
+
+Convert all errors to our custom type
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+use std::error::Error;
+use std::fmt;
+use std::fs::File;
+
+#[derive(Debug)]
+enum CustomErrors {
+    NoFile,
+    NonRustFile,
+}
+
+impl Error for CustomErrors {}
+impl fmt::Display for CustomErrors {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "error: {:?}", self)
+    }
+}
+
+fn do_thing() -> Result<(), Box<dyn Error>> {
+    let file = File::open("foo.txt")?;
+    Ok(())
+}
+
+fn main() {
+    do_thing();
+}
+```
+
+```rust
+fn do_thing() -> Result<(), Box<dyn Error>> {
+    let file = File::open("foo.txt")?;
+    Ok(())
+}
+```
+
+```rust
+fn do_thing() -> Result<(), CustomErrors> {
+    let file = File::open("foo.txt").map_err(|_| CustomErrors::NoFile)?;
+    Ok(())
+}
+```
+
+</CodeSurfer>
+
+---
+
+# OR
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust
+impl Error for CustomErrors {}
+impl fmt::Display for CustomErrors {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "error: {:?}", self)
+    }
+}
+
+fn do_thing() -> Result<(), CustomErrors> {
+    let file = File::open("foo.txt")?;
+    Ok(())
+}
+```
+
+```rust
+impl Error for CustomErrors {}
+impl fmt::Display for CustomErrors {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "error: {:?}", self)
+    }
+}
+impl From<std::io::Error> for CustomErrors {
+    fn from(error: std::io::Error) -> CustomErrors {
+        CustomErrors::NoFile
+    }
+}
+
+fn do_thing() -> Result<(), CustomErrors> {
+    let file = File::open("foo.txt")?;  // that is cleaner
+    Ok(())
+}
+```
+
+</CodeSurfer>
+
+---
+
+What about all those libraries that I keep hearing about?
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust title="thiserror"
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+pub enum DataStoreError {
+    #[error("data store disconnected")]
+    Disconnect(#[from] io::Error),
+    #[error("the data for key `{0}` is not available")]
+    Redaction(String),
+    #[error("invalid header (expected {expected:?}, found {found:?})")]
+    InvalidHeader {
+        expected: String,
+        found: String,
+    },
+    #[error("unknown data store error")]
+    Unknown,
+}
+```
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={github}>
+
+```rust title="anyhow"
+use anyhow::Result;
+
+fn get_cluster_info() -> Result<ClusterMap> {
+    let config = std::fs::read_to_string("cluster.json")?;
+    let map: ClusterMap = serde_json::from_str(&config)?;
+    Ok(map)
+}
+```
+</CodeSurfer>
+
+---
+
+[dtolnay/thiserror](https://github.com/dtolnay/thiserror)
+[dtolnay/anyhow](https://github.com/dtolnay/anyhow)
+[shepmaster/snafu](https://github.com/shepmaster/snafu)
+[quick-error](https://github.com/tailhook/quick-error)
+
+...
+
+There are quite a few, but you get the idea
+
+---
+
+# Bye! 🙌
