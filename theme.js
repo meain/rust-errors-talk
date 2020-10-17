@@ -1,7 +1,7 @@
 export default {
   fonts: {
     body: "Inconsolata", // Iosevka
-    monospace: "TerminessTTF NF",
+    monospace: "Inconsolata",
   },
   colors: {
     text: "black",
