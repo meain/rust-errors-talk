@@ -1,5 +1,5 @@
 import quicktheme from './theme'
-import { themes } from 'mdx-deck'
+import { Head,themes } from 'mdx-deck'
 import { CodeSurfer } from "code-surfer"
 import "prismjs/components/prism-rust"
 import { github } from "@code-surfer/themes"
@@ -7,6 +7,10 @@ import ErrorLayout from './ErrorLayout.js'
 import './styles.css'
 
 export const theme = {...quicktheme, ...themes.prism, ...quicktheme}
+
+<Head>
+  <title>Intro to errors in Rust</title>
+</Head>
 
 # Hey
 
