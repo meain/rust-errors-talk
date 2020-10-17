@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "mdx-deck presentation.mdx"
+    "start": "mdx-deck presentation.mdx",
+    "build": "mdx-deck build presentation.mdx",
+    "mdx-deck": "mdx-deck"
   },
   "keywords": [],
   "author": "Abin Simon <mail@meain.io> (meain.io)",
