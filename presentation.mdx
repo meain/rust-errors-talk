@@ -212,29 +212,29 @@ fn main() {
 
 ```rust
 enum Option<ValueType> {
-    Some<Valuetype>,
+    Some(Valuetype),
     None
 }
 ```
 
 ```rust
 enum Option<String> {
-    Some<String>,
+    Some(String),
     None
 }
 ```
 
 ```rust
 enum Result<ValueType, ErrorType> {
-    Ok<ValueType>,
-    Err<ErrorType>
+    Ok(ValueType),
+    Err(ErrorType)
 }
 ```
 
 ```rust
 enum Result<String, String> {
-    Ok<String>,
-    Err<String>
+    Ok(String),
+    Err(String)
 }
 ```
 
