@@ -56,25 +56,6 @@ fn is_rustfile(name: &str) -> FileKind {
     }
 }
 ```
-```rust
-enum FileKind {
-    Rust(String),
-    NotRust(String),
-}
-
-fn is_rustfile(name: &str) -> FileKind {
-    if name.ends_with(".rs") {
-        FileKind::Rust(name.to_string())
-    } else {
-        FileKind::NotRust(name.to_string())
-    }
-}
-
-fn main() {
-    println!("main.rs: {:?}", is_rustfile("main.rs"));
-    println!("main.go: {:?}", is_rustfile("main.go"));
-}
-```
 
 ```rust
 enum FileKind {
@@ -242,14 +223,14 @@ enum Option<String> {
 ```rust
 enum Result<ValueType, ErrorType> {
     Ok<ValueType>,
-    Err<ErrorType>  // we don't like anything other than rust
+    Err<ErrorType>
 }
 ```
 
 ```rust
 enum Result<String, String> {
     Ok<String>,
-    Err<String>  // we don't like anything other than rust
+    Err<String>
 }
 ```
 
