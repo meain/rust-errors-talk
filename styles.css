@@ -1,5 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;500;600;800&display=swap");
 code,
 span {
-  font-family: "agave Nerd Font Mono", "Iosevka", "TerminessTTF NF", monaco !important;
+  font-family: "Iosevka", "Inconsolata", "TerminessTTF NF", monaco !important;
   font-size: 1.5rem;
 }
